@@ -1,0 +1,13 @@
+<div class="col-md-3">
+  <div class="list-group">
+    {{#each model as |folder|}}
+      {{#link-to "folders.folder.songs" folder class="list-group-item"}}
+        {{folder.name}}
+      {{/link-to}}
+    {{/each}}
+  </div>
+</div>
+<div class="col-md-9">
+  {{outlet}}
+</div>
+

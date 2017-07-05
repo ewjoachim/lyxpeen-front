@@ -1,0 +1,16 @@
+<div class="row">
+{{#each model as |song|}}
+  <div class="col-md-4">
+    <div class="panel panel-info song-panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{song.name}}</h3>
+      </div>
+      <ul class="list-group">
+      {{#each song.songParts as |part|}}
+        <li class="list-group-item">{{part.name}}</li>
+      {{/each}}
+      </ul>
+    </div>
+  </div>
+{{/each}}
+</div>
