@@ -1,7 +1,8 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.RESTAdapter.extend({
-  namespace: "/api/",
+  namespace: "/api",
 
   buildURL: function(type, id, record) {
     //call the default buildURL and then append a slash

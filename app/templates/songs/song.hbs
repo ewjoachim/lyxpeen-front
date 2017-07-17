@@ -1,0 +1,21 @@
+{{#bulma-section}}
+  {{#link-to "folders.folder.songs" model.folder.id}}
+    <h2 class="subtitle"><span class="icon">{{fa-icon "arrow-left"}}</span> {{model.folder.name}}</h2>
+  {{/link-to}}
+  <hr>
+
+  <h1 class="title">
+    <span class="icon">{{fa-icon "music" size="lg"}}</span> {{model.name}}
+  </h1>
+  <h2 class="subtitle">
+    {{model.description}}
+  </h2>
+  <hr>
+
+  {{#each model.songParts as |part|}}
+    <h4 class="title is-4">{{part.name}}</h4>
+    {{#each part.singerParts as |singerPart|}}
+      {{singer-badge singer=singerPart.singer}}
+    {{/each}}
+  {{/each}}
+{{/bulma-section}}

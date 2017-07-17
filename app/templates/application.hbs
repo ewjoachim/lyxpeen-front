@@ -1,9 +1,22 @@
 <!-- app/templates/application.hbs -->
-<div class="container">
-  <div class="page-header">
-    <h1>Lyxpeen<small> open-source choir management app</small></h1>
+
+<section class="hero is-small is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Lyxpeen
+      </h1>
+      <h2 class="subtitle">
+        Open source choir organizer
+      </h2>
+    </div>
   </div>
-  <div class="row">
-    {{outlet}}
-  </div>
-</div>
+</section>
+
+{{#bulma-section}}
+  {{outlet}}
+{{/bulma-section}}
+
+{{#bulma-footer}}
+  Lyxpeen is an open-source choir management tool
+{{/bulma-footer}}

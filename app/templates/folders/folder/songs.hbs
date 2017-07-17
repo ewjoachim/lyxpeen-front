@@ -1,16 +1,19 @@
-<div class="row">
-{{#each model as |song|}}
-  <div class="col-md-4">
-    <div class="panel panel-info song-panel">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{song.name}}</h3>
-      </div>
-      <ul class="list-group">
-      {{#each song.songParts as |part|}}
-        <li class="list-group-item">{{part.name}}</li>
-      {{/each}}
-      </ul>
-    </div>
-  </div>
-{{/each}}
-</div>
+{{#bulma-columns isMultiline=true}}
+  {{#each model as |song|}}
+    {{#bulma-column isOneThird=true}}
+      <nav class="panel">
+
+        <p class="panel-heading">
+          {{#link-to "songs.song" song }}{{song.name}}{{/link-to}}
+        </p>
+
+        {{#each song.songParts as |part|}}
+          {{#bulma-panel-block}}
+            {{part.name}}
+          {{/bulma-panel-block}}
+        {{/each}}
+
+      </nav>
+    {{/bulma-column}}
+  {{/each}}
+{{/bulma-columns}}

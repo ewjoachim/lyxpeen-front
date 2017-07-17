@@ -2,6 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model(params) {
-    return this.store.findRecord('folder', params.id);
+    var folder = this.store.findRecord('folder', params.id);
+
+    folder.then(() => {
+      this.transitionTo("folders.folder.songs");
+    });
+    return folder;
   },
 });
