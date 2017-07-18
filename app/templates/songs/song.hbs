@@ -12,10 +12,18 @@
   </h2>
   <hr>
 
-  {{#each model.songParts as |part|}}
-    <h4 class="title is-4">{{part.name}}</h4>
-    {{#each part.singerParts as |singerPart|}}
+  {{#each model.songParts as |songPart|}}
+    <h4 class="title is-4 song-part-section">
+      {{songPart.name}}
+      {{#link-to "songs.song.edit-part" songPart}}
+        <span class="icon">{{fa-icon "edit" class="song-part-section-icon"}}</span>
+      {{/link-to}}
+    </h4>
+    {{#each songPart.singerParts as |singerPart|}}
       {{singer-badge singer=singerPart.singer}}
     {{/each}}
   {{/each}}
+
 {{/bulma-section}}
+
+{{outlet "modal"}}
