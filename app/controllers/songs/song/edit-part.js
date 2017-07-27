@@ -12,7 +12,6 @@ export default Ember.Controller.extend({
             .getEach("singer"));
   },
   setGenericSelectedSinger(key, value){
-    console.log(key, value);
   },
 
   selectedSingers: Ember.computed(
