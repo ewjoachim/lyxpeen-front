@@ -1,16 +1,19 @@
-{{#bulma-columns}}
-  {{#bulma-column isOneQuarter=true}}
-    {{#bulma-menu }}
-      {{#bulma-menu-list label="Folders"}}
+<div class="columns">
+  <div class="column is-one-quarter">
+    <div class="menu">
+    <p class="menu-label">
+      Folders
+    </p>
+      <ul class="menu-list">
         {{#each model as |folder|}}
           <li>{{#link-to "folders.folder.songs" folder class="list-group-item"}}
             {{folder.name}}
           {{/link-to}}</li>
         {{/each}}
-      {{/bulma-menu-list}}
-    {{/bulma-menu}}
-  {{/bulma-column}}
-  {{#bulma-column isThreeQuarters=true}}
+      </ul>
+    </div>
+  </div>
+  <div class="column is-three-quarters">
     {{outlet}}
-  {{/bulma-column}}
-{{/bulma-columns}}
+  </div>
+</div>

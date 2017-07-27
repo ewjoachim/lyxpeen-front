@@ -1,5 +1,4 @@
 <!-- app/templates/application.hbs -->
-
 <section class="hero is-small is-primary is-bold">
   <div class="hero-body">
     <div class="container">
@@ -15,10 +14,12 @@
   </div>
 </section>
 
-{{#bulma-section}}
-  {{outlet}}
-{{/bulma-section}}
+<section class="section">
+  <div class="container">
+    {{outlet}}
+  </div>
+</section>
 
-{{#bulma-footer}}
+<footer class="footer">
   Lyxpeen is an open-source choir management tool
-{{/bulma-footer}}
+</footer>

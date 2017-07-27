@@ -1,6 +1,6 @@
-{{#bulma-columns isMultiline=true}}
+<div class="columns is-multiline">
   {{#each model as |song|}}
-    {{#bulma-column isOneThird=true}}
+    <div class="column is-one-third">
       <nav class="panel">
 
         <p class="panel-heading">
@@ -8,12 +8,12 @@
         </p>
 
         {{#each song.songParts as |part|}}
-          {{#bulma-panel-block}}
+          <div class="panel-block">
             {{part.name}}
-          {{/bulma-panel-block}}
+          </div>
         {{/each}}
 
       </nav>
-    {{/bulma-column}}
+    </div>
   {{/each}}
-{{/bulma-columns}}
+</div>

@@ -18,7 +18,6 @@
     "broccoli-asset-rev": "^2.4.5",
     "bulma": "^0.1.2",
     "ember-ajax": "^3.0.0",
-    "ember-bulma": "^0.2.0",
     "ember-cli": "2.13.3",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.3.0",
