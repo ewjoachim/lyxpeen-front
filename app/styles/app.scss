@@ -1,7 +1,11 @@
+// Variables
+$ember-power-select-multiple-selection-background-color: transparent;
+$ember-power-select-multiple-option-border-color: transparent;
 
 // Imports
 
 @import "bower_components/bulma/bulma.sass";
+@import "ember-power-select";
 
 
 // Styles
