@@ -4,28 +4,31 @@ export default Ember.Controller.extend({
 
   isValidateDisabled: Ember.computed.empty("model.songPart.name"),
 
-  getGenericSelectedSinger(key) {
-    var isMain = (key === "selectedSingers");
-    return (this.model.songPart
-            .get("singerParts")
-            .filterBy("isMain", isMain)
-            .getEach("singer"));
-  },
-  setGenericSelectedSinger(key, value){
-  },
-
   selectedSingers: Ember.computed(
     "model.singers", "model.songPart", {
-      get: function(key){return this.getGenericSelectedSinger(key)},
-      set: function(key, value){return this.setGenericSelectedSinger(key, value)},
+      get: function(key){
+        return (this.model.songPart
+            .get("singerParts")
+            .filterBy("isMain", true)
+            .getEach("singer"));
+      },
+      set: function(key, value){
+      },
     }
   ),
-  unselectedSingers: Ember.computed.setDiff("model.singers", "selectedSingers"),
+  unselectedSingers: Ember.computed.setDiff(
+    "model.singers", "selectedSingers"),
 
   selectedAdditionalSingers: Ember.computed(
     "model.singers", "model.songPart", {
-      get: function(key){return this.getGenericSelectedSinger(key)},
-      set: function(key, value){return this.setGenericSelectedSinger(key, value)},
+      get: function(key){
+        return (this.model.songPart
+            .get("singerParts")
+            .filterBy("isMain", false)
+            .getEach("singer"));
+      },
+      set: function(key, value){
+      },
     }
   ),
   unselectedAdditionalSingers: Ember.computed.setDiff(
