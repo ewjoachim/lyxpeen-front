@@ -2,11 +2,28 @@
   <div class="modal-background" {{action "cancel"}}></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">{{input type="text" placeholder="Song part name" value=model.name}}</p>
+      <p class="modal-card-title">
+        {{input class="modal-card-title" type="text" placeholder="Voice name" value=model.song.name}}
+      </p>
       <button class="delete" {{action "cancel"}}></button>
     </header>
     <section class="modal-card-body">
-
+      <h4 class="is-4">They sing this voice</h4>
+      {{#power-select-multiple
+          selected=selectedSingers
+          options=unselectedSingers
+          onchange=(action (mut selectedSingers))
+          as |singer|}}
+        {{singer-badge singer=singer}}
+      {{/power-select-multiple}}
+      <h4 class="is-4">They can also sing this voice</h4>
+        {{#power-select-multiple
+          selected=selectedAdditionalSingers
+          options=unselectedAdditionalSingers
+          onchange=(action (mut selectedAdditionalSingers))
+          as |singer|}}
+        {{singer-badge singer=singer}}
+      {{/power-select-multiple}}
     </section>
     <footer class="modal-card-foot">
       <a class="button is-success" {{action "validate"}} disabled={{isValidateDisabled}}>Save changes</a>

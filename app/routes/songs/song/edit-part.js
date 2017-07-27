@@ -2,6 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
+  model() {
+    return Ember.RSVP.hash({
+      songPart: this._super(...arguments),
+      singers: this.store.findAll('singer'),
+    });
+  },
+
   renderTemplate() {
     this.render({ outlet: 'modal' });
   },
