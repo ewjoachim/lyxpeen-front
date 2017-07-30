@@ -12,4 +12,12 @@ On another console:
 $ ember serve  --proxy=http://127.0.0.1:8000/
 ```
 
-Then navigate to ``http://localhost:4200/2bc84504-dea0-4dc2-ae18-b49d096ac224``
+Then navigate to ``http://localhost:4200/2bc84504-dea0-4dc2-ae18-b49d096ac224``.
+
+Open the Inspector, on the Data tab
+
+When you select "singer-part", its content is blank
+
+All other models are now blank too
+
+CPU is going mad until Chrome/Firefox tab is closed.
