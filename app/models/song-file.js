@@ -7,4 +7,5 @@ export default DS.Model.extend({
   path: DS.attr('string'),
   song: DS.belongsTo('song'),
   isXml: DS.attr('boolean'),
+  isMainFile: DS.attr('boolean'),
 });
