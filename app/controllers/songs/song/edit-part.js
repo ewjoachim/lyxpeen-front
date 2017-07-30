@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
 
   isValidateDisabled: Ember.computed.empty("model.songPart.name"),
 
-  selectedSingers: Ember.computed(
+  mainSingers: Ember.computed(
     "model.singers", "model.songPart", {
       get: function(key){
         return (this.model.songPart
@@ -16,10 +16,10 @@ export default Ember.Controller.extend({
       },
     }
   ),
-  unselectedSingers: Ember.computed.setDiff(
-    "model.singers", "selectedSingers"),
+  mainSingersOptions: Ember.computed.setDiff(
+    "model.singers", "mainSingers"),
 
-  selectedAdditionalSingers: Ember.computed(
+  additionalSingers: Ember.computed(
     "model.singers", "model.songPart", {
       get: function(key){
         return (this.model.songPart
@@ -31,8 +31,8 @@ export default Ember.Controller.extend({
       },
     }
   ),
-  unselectedAdditionalSingers: Ember.computed.setDiff(
-    "model.singers", "selectedAdditionalSingers"),
+  additionalSingersOptions: Ember.computed.setDiff(
+    "model.singers", "additionalSingers"),
 
   actions: {
     validate(){

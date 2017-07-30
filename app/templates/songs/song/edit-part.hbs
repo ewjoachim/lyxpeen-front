@@ -10,17 +10,17 @@
     <section class="modal-card-body">
       <h4 class="is-4">They sing this voice</h4>
       {{#power-select-multiple
-          selected=selectedSingers
-          options=unselectedSingers
-          onchange=(action (mut selectedSingers))
+          selected=mainSingers
+          options=mainSingersOptions
+          onchange=(action (mut mainSingers))
           as |singer|}}
         {{singer-badge singer=singer}}
       {{/power-select-multiple}}
       <h4 class="is-4">They can also sing this voice</h4>
         {{#power-select-multiple
-          selected=selectedAdditionalSingers
-          options=unselectedAdditionalSingers
-          onchange=(action (mut selectedAdditionalSingers))
+          selected=additionalSingers
+          options=additionalSingersOptions
+          onchange=(action (mut additionalSingers))
           as |singer|}}
         {{singer-badge singer=singer}}
       {{/power-select-multiple}}
