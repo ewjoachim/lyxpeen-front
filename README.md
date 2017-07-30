@@ -3,7 +3,7 @@
 For now, I haven't been able to mock my API so I've exported all my API calls to be easily served by a local server..
 
 ```console
-# Create a local server on port 8000
+$ # Create a local server on port 8000
 $ cd api_calls && python3 -m http.server
 ```
 
