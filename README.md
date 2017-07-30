@@ -29,5 +29,7 @@ All other models are now blank too
 <img width="748" alt="capture d ecran 2017-07-30 a 18 00 33" src="https://user-images.githubusercontent.com/1457576/28754995-9ddc7330-7551-11e7-83b5-954c7447c560.png">
 
 
-CPU is going mad until Chrome/Firefox tab is closed.
+CPU is going mad until Chrome tab is closed.
 <img width="483" alt="capture d ecran 2017-07-30 a 18 01 42" src="https://user-images.githubusercontent.com/1457576/28754994-9dc9c7d0-7551-11e7-973b-6966bf95f493.png">
+
+With Firefox, it's the same except the tab is really frozen, and after 30sec, we get the popup saying "A script has been blocking for too long, Keep running / Stop / Debug ?
