@@ -7,17 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('songs', function(){
-    this.route('song', { path: ':song_id' }, function() {
-      this.route('edit-part', { path: 'edit-part/:song_part_id' });
-    });
-  });
-
-  this.route('folders', function(){
-    this.route('folder', { path: ':folder_id' }, function(){
-      this.route('songs');
-    });
-  });
+  this.route('song', { path: ':song_id' });
 });
 
 export default Router;

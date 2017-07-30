@@ -1,0 +1,5 @@
+{{#each model.songParts as |songPart|}}
+  {{#each songPart.singerParts as |singerPart|}}
+    {{singerPart.singer.id}}
+  {{/each}}
+{{/each}}
