@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       get: function(key){
         return (this.model.songPart
             .get("singerParts")
-            .filterBy("isMain", true)
+            .filterBy("isMainPart", true)
             .getEach("singer"));
       },
       set: function(key, value){
@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
       get: function(key){
         return (this.model.songPart
             .get("singerParts")
-            .filterBy("isMain", false)
+            .filterBy("isMainPart", false)
             .getEach("singer"));
       },
       set: function(key, value){
