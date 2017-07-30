@@ -1,4 +1,4 @@
-Reproducing the bug :
+# Reproducing the bug
 
 For now, I haven't been able to mock my API so I've exported all my API calls to be easily served by a local server..
 
