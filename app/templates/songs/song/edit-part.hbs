@@ -9,21 +9,25 @@
     </header>
     <section class="modal-card-body">
       <h4 class="is-4">They sing this voice</h4>
-      {{#power-select-multiple
-          selected=mainSingers
-          options=mainSingersOptions
-          onchange=(action (mut mainSingers))
+      {{#each mainSingers as |singer|}}
+        {{singer-badge singer=singer}}
+      {{/each}}
+      {{#power-select
+          options=selectableSingers
+          onchange=(action 'test')
           as |singer|}}
         {{singer-badge singer=singer}}
-      {{/power-select-multiple}}
+      {{/power-select}}
       <h4 class="is-4">They can also sing this voice</h4>
-        {{#power-select-multiple
-          selected=additionalSingers
-          options=additionalSingersOptions
-          onchange=(action (mut additionalSingers))
+        {{#each additionalSingers as |singer|}}
+          {{singer-badge singer=singer}}
+        {{/each}}
+        {{#power-select
+          options=selectableSingers
+          onchange=(action 'test')
           as |singer|}}
         {{singer-badge singer=singer}}
-      {{/power-select-multiple}}
+      {{/power-select}}
     </section>
     <footer class="modal-card-foot">
       <a class="button is-success" {{action "validate"}} disabled={{isValidateDisabled}}>Save changes</a>
