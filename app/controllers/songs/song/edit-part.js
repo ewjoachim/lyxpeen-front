@@ -4,35 +4,35 @@ export default Ember.Controller.extend({
 
   isValidateDisabled: Ember.computed.empty("model.songPart.name"),
 
+  selectableSingers: Ember.computed(
+    "model.singers", "mainSingers", "additionalSingers", function(){
+      return Ember.RSVP.Promise.all([
+              this.get("model.singers"),
+              Ember.RSVP.Promise.all(this.get("mainSingers")),
+              Ember.RSVP.Promise.all(this.get("additionalSingers")),
+      ]).then(([allSingers, mainSingers, additionalSingers])=>{
+        return allSingers.reject((singer)=>{
+          return mainSingers.includes(singer) || additionalSingers.includes(singer);
+        });
+      });
+    }
+  ),
+
   mainSingers: Ember.computed(
-    "model.singers", "model.songPart", {
+    "model.songPart.singerParts.@each.{isMainPart,singer}", {
       get: function(key){
-        return (this.model.songPart
-            .get("singerParts")
-            .filterBy("isMainPart", true)
-            .getEach("singer"));
-      },
-      set: function(key, value){
+        return this.get("model.songPart.singerParts").filterBy("isMainPart", true).getEach("singer");
       },
     }
   ),
-  mainSingersOptions: Ember.computed.setDiff(
-    "model.singers", "mainSingers"),
 
   additionalSingers: Ember.computed(
-    "model.singers", "model.songPart", {
+    "model.songPart.singerParts.@each.{isMainPart,singer}", {
       get: function(key){
-        return (this.model.songPart
-            .get("singerParts")
-            .filterBy("isMainPart", false)
-            .getEach("singer"));
-      },
-      set: function(key, value){
+        return this.get("model.songPart.singerParts").filterBy("isMainPart", false).getEach("singer");
       },
     }
   ),
-  additionalSingersOptions: Ember.computed.setDiff(
-    "model.singers", "additionalSingers"),
 
   actions: {
     validate(){
