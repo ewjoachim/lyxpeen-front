@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 export default Ember.Controller.extend({
 
@@ -6,14 +7,16 @@ export default Ember.Controller.extend({
 
   selectableSingers: Ember.computed(
     "model.singers", "mainSingers", "additionalSingers", function(){
-      return Ember.RSVP.Promise.all([
-              this.get("model.singers"),
-              Ember.RSVP.Promise.all(this.get("mainSingers")),
-              Ember.RSVP.Promise.all(this.get("additionalSingers")),
-      ]).then(([allSingers, mainSingers, additionalSingers])=>{
-        return allSingers.reject((singer)=>{
-          return mainSingers.includes(singer) || additionalSingers.includes(singer);
-        });
+      return  DS.PromiseArray.create({
+        promise: Ember.RSVP.Promise.all([
+          this.get("model.singers"),
+          Ember.RSVP.Promise.all(this.get("mainSingers")),
+          Ember.RSVP.Promise.all(this.get("additionalSingers")),
+        ]).then(([allSingers, mainSingers, additionalSingers])=>{
+          return allSingers.reject((singer)=>{
+            return mainSingers.includes(singer) || additionalSingers.includes(singer);
+          });
+        })
       });
     }
   ),
