@@ -3,34 +3,49 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">
-        {{input class="modal-card-title" type="text" placeholder="Voice name" value=model.songPart.name}}
+        {{input
+            class="modal-card-title"
+            type="text"
+            placeholder="Voice name"
+            value=model.songPart.name}}
       </p>
       <button class="delete" {{action "cancel"}}></button>
     </header>
     <section class="modal-card-body">
+
       <h4 class="is-4">They sing this voice</h4>
       {{#each mainSingers as |singer|}}
-        {{singer-badge singer=singer}}
-      {{/each}}
-      {{#power-select
-          options=selectableSingers
-          onchange=(action 'test')
-          as |singer|}}
-        {{singer-badge singer=singer}}
-      {{/power-select}}
-      <h4 class="is-4">They can also sing this voice</h4>
-        {{#each additionalSingers as |singer|}}
+        <span class="tags has-addons singers-list-tags">
           {{singer-badge singer=singer}}
-        {{/each}}
-        {{#power-select
-          options=selectableSingers
-          onchange=(action 'test')
-          as |singer|}}
-        {{singer-badge singer=singer}}
-      {{/power-select}}
+          <a class="tag is-delete is-medium" {{action "deleteSinger" "main" singer}}></a>
+        </span>
+      {{/each}}
+
+      <div class="dropdown {{if isMainListActive 'is-active'}}" >
+        <div class="dropdown-trigger">
+          <a class="tag is-medium singer-select-trigger is-delete {{if isMainListActive 'is-active'}}"
+             {{action "toggleListActive" "main"}} aria-haspopup="true" aria-controls="dropdown-menu2"></a>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+          <div class="dropdown-content">
+            <div class="dropdown-item">
+              {{#each selectableSingers as |newSinger|}}
+                <a class="add-singer" {{action "addSinger" "main" newSinger}}>
+                  {{singer-badge singer=newSinger}}
+                </a>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
     <footer class="modal-card-foot">
-      <a class="button is-success" {{action "validate"}} disabled={{isValidateDisabled}}>Save changes</a>
+      <a class="button is-success"
+        {{action "validate"}}
+        disabled={{isValidateDisabled}}>
+        Save changes
+      </a>
       <a label="button" {{action "cancel"}}>Cancel</a>
     </footer>
   </div>

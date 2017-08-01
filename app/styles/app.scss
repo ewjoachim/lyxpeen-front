@@ -6,6 +6,21 @@
 
 
 // Styles
+.singers-list-tags {
+  display: inline-flex;
+}
+
+.singer-select-trigger.tag.is-delete {
+  &:before {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  }
+  &:after {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  }
+  &.is-active {
+    background-color: #e0e0e0;
+  }
+}
 
 // Colors
 .part-aqua {
