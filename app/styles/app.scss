@@ -98,3 +98,6 @@
   cursor: pointer;
 }
 
+[data-ember-action]:not(:disabled) {
+  cursor: pointer;
+}
