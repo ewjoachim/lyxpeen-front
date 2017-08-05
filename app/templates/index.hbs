@@ -1,1 +1,22 @@
-{{outlet}}
+<div class="columns">
+  <div class="column is-one-third">
+    {{#link-to "folders"}}
+      <p class="notification is-info has-text-centered">
+        <h3 class="title is-3"><span class="icon is-large">{{fa-icon "music"}}</span> Songs</h3>
+      </p>
+    {{/link-to}}
+  </div>
+  <div class="column is-one-third">
+    {{#link-to "songs.random"}}
+      <p class="notification is-warning has-text-centered">
+        <h3 class="title is-3"><span class="icon is-large">{{fa-icon "random"}}</span> Random song</h3>
+      </p>
+    {{/link-to}}
+  </div>
+  <div class="column is-one-third">
+    <p class="notification is-danger has-text-centered">
+      <h3 class="title is-3"><span class="icon is-large">{{fa-icon "users"}}</span> Singers</h3>
+    </p>
+  </div>
+</div>
+

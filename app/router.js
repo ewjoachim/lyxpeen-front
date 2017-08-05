@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('song', { path: ':song_id' }, function() {
       this.route('edit-part', { path: 'edit-part/:song_part_id' });
     });
+    this.route('random');
   });
 
   this.route('folders', function(){
