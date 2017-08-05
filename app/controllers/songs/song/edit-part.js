@@ -26,7 +26,11 @@ export default Ember.Controller.extend({
   mainSingers: Ember.computed(
     "model.songPart.singerParts.@each.{isMainPart,isDeleted,singer}", {
       get: function(key){
-        return this.get("model.songPart.singerParts").filterBy("isDeleted", false).filterBy("isMainPart", true).getEach("singer");
+        return (this.get("model.songPart.singerParts")
+                .filterBy("isDeleted", false)
+                .filterBy("isMainPart", true)
+                .sortBy("singer.section")
+                .getEach("singer"));
       },
     }
   ),
@@ -34,7 +38,11 @@ export default Ember.Controller.extend({
   additionalSingers: Ember.computed(
     "model.songPart.singerParts.@each.{isMainPart,isDeleted,singer}", {
       get: function(key){
-        return this.get("model.songPart.singerParts").filterBy("isDeleted", false).filterBy("isMainPart", false).getEach("singer");
+        return (this.get("model.songPart.singerParts")
+                .filterBy("isDeleted", false)
+                .filterBy("isMainPart", false)
+                .sortBy("singer.section")
+                .getEach("singer"));
       },
     }
   ),
