@@ -28,7 +28,7 @@
       {{songPart.name}}
     {{/link-to}}
   </h4>
-  {{#each songPart.singerParts as |singerPart|}}
+  {{#each songPart.sortedSingerParts as |singerPart|}}
     {{singer-badge singer=singerPart.singer}}
   {{/each}}
 {{/each}}
