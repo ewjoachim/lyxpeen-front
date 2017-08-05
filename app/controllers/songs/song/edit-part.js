@@ -3,6 +3,8 @@ import DS from 'ember-data';
 
 export default Ember.Controller.extend({
 
+  modifiedSingerParts: [],
+
   isValidateDisabled: Ember.computed.empty("model.songPart.name"),
 
   selectableSingers: Ember.computed(
@@ -22,45 +24,65 @@ export default Ember.Controller.extend({
   ),
 
   mainSingers: Ember.computed(
-    "model.songPart.singerParts.@each.{isMainPart,singer}", {
+    "model.songPart.singerParts.@each.{isMainPart,isDeleted,singer}", {
       get: function(key){
-        return this.get("model.songPart.singerParts").filterBy("isMainPart", true).getEach("singer");
+        return this.get("model.songPart.singerParts").filterBy("isDeleted", false).filterBy("isMainPart", true).getEach("singer");
       },
     }
   ),
 
   additionalSingers: Ember.computed(
-    "model.songPart.singerParts.@each.{isMainPart,singer}", {
+    "model.songPart.singerParts.@each.{isMainPart,isDeleted,singer}", {
       get: function(key){
-        return this.get("model.songPart.singerParts").filterBy("isMainPart", false).getEach("singer");
+        return this.get("model.songPart.singerParts").filterBy("isDeleted", false).filterBy("isMainPart", false).getEach("singer");
       },
     }
   ),
 
   actions: {
     validate() {
-      if(this.get("model.songPart.hasDirtyAttributes")) {
-        this.model.songPart.save();
-      }
+      this.model.songPart.save();
+      this.get("modifiedSingerParts").forEach((singerPart)=>{
+        singerPart.save();
+      });
       this.get("target").send("close");
     },
     cancel() {
       this.model.songPart.rollbackAttributes();
+      this.get("modifiedSingerParts").forEach((singerPart)=>{
+        singerPart.rollbackAttributes();
+      });
       this.get("target").send("close");
     },
 
     toggleListActive(main) {
-      let prop = {"main": "isMainListActive",
-                  "additional": "isAdditionalListActive"}[main]
+      let prop = "isMainListActive";
+      if (! main) {
+        prop = "isAdditionalListActive";
+      }
       this.set(prop, !this.get(prop));
 
     },
 
-    deleteSinger (singer){
+    deleteSinger (singer, main){
+      let singerPart = (
+        this.get("model.songPart.singerParts")
+        .filterBy("isMainPart", main)
+        .filterBy("singer", singer).get("firstObject"));
 
+      singerPart.deleteRecord();
+      this.get("modifiedSingerParts").pushObject(singerPart);
     },
-    addSinger(singer) {
 
+    addSinger(singer, main) {
+      let singerPart = this.get('store').createRecord('singer-part',
+        {
+          isMainPart: main,
+          singer: singer,
+          songPart: this.get("model.songPart"),
+        });
+
+      this.get("modifiedSingerParts").pushObject(singerPart);
     },
   }
 });
