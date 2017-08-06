@@ -29,7 +29,6 @@ export default Ember.Controller.extend({
         return (this.get("model.songPart.singerParts")
                 .filterBy("isDeleted", false)
                 .filterBy("isMainPart", true)
-                .sortBy("singer.section")
                 .getEach("singer"));
       },
     }
@@ -41,7 +40,6 @@ export default Ember.Controller.extend({
         return (this.get("model.songPart.singerParts")
                 .filterBy("isDeleted", false)
                 .filterBy("isMainPart", false)
-                .sortBy("singer.section")
                 .getEach("singer"));
       },
     }
