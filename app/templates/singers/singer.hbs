@@ -1,1 +1,70 @@
-{{outlet}}
+{{#if isEditingName}}
+  <div class="field">
+    <div class="control">
+      {{input
+        class="input is-large"
+        type="text"
+        placeholder="Singer name"
+        value=model.user.name}}
+    </div>
+  </div>
+{{else}}
+  <h2 class="title is-2" {{action "editName"}}>
+    {{model.user.name}}
+    <span class="icon is-medium">{{fa-icon "edit"}}</span>
+  </h2>
+
+  <h3 class="title is-3">
+    Active:
+    <span class="icon is-medium">
+      {{#if model.isActive}}
+        {{fa-icon "check"}}
+      {{else}}
+        {{fa-icon "times"}}
+      {{/if}}
+    </span>
+  </h3>
+
+  <h3 class="title is-3">
+    Voice section:
+    <span class="tag is-large back-{{model.mainSection.color}}">
+      {{model.mainSection.name}}
+    </span>
+  </h3>
+
+  <h3 class="title is-3">
+    Can sing:
+  </h3>
+  <table class="table">
+    <thead>
+      <th>Folder</th>
+      <th>Song Title</th>
+      <th>Voice part</th>
+    </thead>
+    <tbody>
+      {{#each model.singerParts as |singerPart|}}
+        <tr>
+          <td>{{#link-to "folders.folder" singerPart.songPart.song.folder}}
+            {{singerPart.songPart.song.folder.name}}
+          {{/link-to}}</td>
+          <td>{{#link-to "songs.song" singerPart.songPart.song}}
+            {{singerPart.songPart.song.name}}
+          {{/link-to}}</td>
+          <td>{{singerPart.songPart.name}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{/if}}
+
+
+{{#if isEditingName}}
+  <div class="field is-grouped">
+    <p class="control">
+      <a class="button is-success" {{action "save"}}>Save</a>
+    </p>
+    <p class="control">
+      <a class="button is-link" {{action "cancel"}}>Cancel</a>
+    </p>
+  </div>
+{{/if}}

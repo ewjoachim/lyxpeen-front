@@ -23,87 +23,188 @@
 }
 
 // Colors
-.part-aqua {
+.back-aqua {
   background-color: #7fdbff;
   color: hsl(197, 100%, 20%);
 }
 
-.part-black {
+
+.back-black {
   background-color: #111111;
   color: #DDDDDD;
 }
 
-.part-blue {
+
+.back-blue {
   background-color: #0074d9;
   color: hsl(208, 100%, 85%);
 }
 
-.part-fuchsia {
+
+.back-fuchsia {
   background-color: #f012be;
-  color:hsl(314, 88%, 210)
+  color: hsl(314, 88%, 210)
 }
 
-.part-gray {
+
+.back-gray {
   background-color: #aaaaaa;
 }
 
-.part-green {
+
+.back-green {
   background-color: #2ecc40;
   color: hsl(127, 63%, 15%);
 }
 
-.part-lime {
+
+.back-lime {
   background-color: #01ff70;
   color: hsl(146, 100%, 20%);
 }
 
-.part-maroon {
+
+.back-maroon {
   background-color: #85144b;
   color: hsl(331, 74%, 70%);
 }
 
-.part-navy {
+
+.back-navy {
   background-color: #001f3f;
   color: hsl(210, 100%, 75%);
 }
 
-.part-olive {
+
+.back-olive {
   background-color: #3d9970;
   color: hsl(153, 43%, 15%);
 }
 
-.part-orange {
+
+.back-orange {
   background-color: #ff851b;
   color: hsl(28, 100%, 20%);
 }
 
-.part-purple {
+
+.back-purple {
   background-color: #b10dc9;
   color: hsl(292, 88%, 820)
 }
 
-.part-red {
+
+.back-red {
   background-color: #ff4136;
   color: hsl(3, 100%, 15%);
 }
 
-.part-silver {
+
+.back-silver {
   background-color: #dddddd;
 }
 
-.part-teal {
+
+.back-teal {
   background-color: #39cccc;
 }
 
-.part-yellow {
+
+.back-yellow {
   background-color: #ffdc00;
   color: hsl(52, 100%, 20%)
 }
 
-.part-white {
+
+.back-white {
   background-color: #ffffff;
   color: #444;
 }
+
+.text-aqua {
+  color: #7fdbff;
+}
+
+
+.text-black {
+  color: #111111;
+}
+
+
+.text-blue {
+  color: #0074d9;
+}
+
+
+.text-fuchsia {
+  color: #f012be;
+}
+
+
+.text-gray {
+  color: #aaaaaa;
+}
+
+
+.text-green {
+  color: #2ecc40;
+}
+
+
+.text-lime {
+  color: #01ff70;
+}
+
+
+.text-maroon {
+  color: #85144b;
+}
+
+
+.text-navy {
+  color: #001f3f;
+}
+
+
+.text-olive {
+  color: #3d9970;
+}
+
+
+.text-orange {
+  color: #ff851b;
+}
+
+
+.text-purple {
+  color: #b10dc9;
+}
+
+
+.text-red {
+  color: #ff4136;
+}
+
+
+.text-silver {
+  color: #dddddd;
+}
+
+
+.text-teal {
+  color: #39cccc;
+}
+
+
+.text-yellow {
+  color: #ffdc00;
+}
+
+
+.text-white {
+  color: #ffffff;
+}
+
 
 .song-part-section {
   margin-top: 1em;
@@ -116,3 +217,5 @@
 [data-ember-action]:not(:disabled) {
   cursor: pointer;
 }
+
+

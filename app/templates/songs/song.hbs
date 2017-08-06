@@ -25,11 +25,18 @@
 {{#each model.songParts as |songPart|}}
   <h4 class="title is-4 song-part-section">
     {{#link-to "songs.song.edit-part" songPart.id}}
-      {{songPart.name}}
+      {{#if songPart.section}}
+        <span class="text-{{songPart.section.color}}">
+          {{songPart.name}}
+        </span>
+      {{else}}
+        {{songPart.name}}
+      {{/if}}
+
     {{/link-to}}
   </h4>
   {{#each songPart.sortedSingerParts as |singerPart|}}
-    {{singer-badge singer=singerPart.singer}}
+    {{singer-badge singer=singerPart.singer link=true}}
   {{/each}}
 {{/each}}
 
