@@ -19,6 +19,9 @@ Router.map(function() {
       this.route('songs');
     });
   });
+  this.route('singers', function() {
+    this.route('singer', { path: ':singer_id' });
+  });
 });
 
 export default Router;

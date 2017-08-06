@@ -1,0 +1,20 @@
+<div class="columns">
+  <div class="column is-one-quarter">
+    <div class="menu">
+    <p class="menu-label">
+      Singers
+    </p>
+      <ul class="menu-list">
+        {{#each sortedSingers as |singer|}}
+          <li>{{#link-to "singers.singer" singer class="list-group-item"}}
+            {{singer.mainSection.orderKey}}
+            {{singer-badge singer=singer}}
+          {{/link-to}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="column is-three-quarters">
+    {{outlet}}
+  </div>
+</div>
