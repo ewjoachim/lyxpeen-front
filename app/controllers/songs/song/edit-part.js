@@ -5,7 +5,13 @@ export default Ember.Controller.extend({
 
   modifiedSingerParts: [],
 
+  activeList: null,
+
   isValidateDisabled: Ember.computed.empty("model.songPart.name"),
+
+  isMainListActive: Ember.computed.equal("activeList", "main"),
+
+  isAdditionalListActive: Ember.computed.equal("activeList", "additional"),
 
   selectableSingers: Ember.computed(
     "model.singers", "mainSingers", "additionalSingers", function(){
@@ -61,13 +67,12 @@ export default Ember.Controller.extend({
       this.get("target").send("close");
     },
 
-    toggleListActive(main) {
-      let prop = "isMainListActive";
-      if (! main) {
-        prop = "isAdditionalListActive";
+    activateList(list) {
+      if(this.get("activeList") === list) {
+        this.set("activeList", null);
+      } else {
+        this.set("activeList", list);
       }
-      this.set(prop, !this.get(prop));
-
     },
 
     deleteSinger (singer, main){
