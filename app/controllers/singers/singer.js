@@ -1,7 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
+  sections: Ember.computed("", function(){
+    return this.store.peekAll('section')
+  }),
+
   actions: {
+
     editName(){
       this.set("isEditingName", true);
     },
