@@ -17,11 +17,10 @@ export default Ember.Controller.extend({
     "mainSingers", "additionalSingers", function(){
       return  DS.PromiseArray.create({
         promise: Ember.RSVP.Promise.all([
-          this.store.findAll("singer"),
           Ember.RSVP.Promise.all(this.get("mainSingers")),
           Ember.RSVP.Promise.all(this.get("additionalSingers")),
-        ]).then(([allSingers, mainSingers, additionalSingers])=>{
-          return allSingers.reject((singer)=>{
+        ]).then(([mainSingers, additionalSingers])=>{
+          return this.store.peekAll("singer").reject((singer)=>{
             return mainSingers.includes(singer) || additionalSingers.includes(singer);
           });
         })
