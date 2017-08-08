@@ -1,7 +1,8 @@
 import ApplicationAdapter from './application';
+import Ember from 'ember'
 
 export default ApplicationAdapter.extend({
-  queryRecord(modelName, query) {
+  queryRecord() {
     return Ember.$.getJSON(`${this.namespace}/songs/random`);
   }
 });

@@ -31,7 +31,7 @@ export default Ember.Controller.extend({
 
   mainSingers: Ember.computed(
     "model.songPart.singerParts.@each.{isMainPart,isDeleted,singer}", {
-      get: function(key){
+      get: function(){
         return (this.get("model.songPart.singerParts")
                 .filterBy("isDeleted", false)
                 .filterBy("isMainPart", true)
@@ -42,7 +42,7 @@ export default Ember.Controller.extend({
 
   additionalSingers: Ember.computed(
     "model.songPart.singerParts.@each.{isMainPart,isDeleted,singer}", {
-      get: function(key){
+      get: function(){
         return (this.get("model.songPart.singerParts")
                 .filterBy("isDeleted", false)
                 .filterBy("isMainPart", false)
