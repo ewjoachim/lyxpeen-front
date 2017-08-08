@@ -14,8 +14,10 @@
     {{/link-to}}
   </div>
   <div class="column is-one-third">
-    <p class="notification is-danger has-text-centered">
-      <h3 class="title is-3"><span class="icon is-large">{{fa-icon "users"}}</span> Singers</h3>
-    </p>
+    {{#link-to "singers"}}
+      <p class="notification is-danger has-text-centered">
+        <h3 class="title is-3"><span class="icon is-large">{{fa-icon "users"}}</span> Singers</h3>
+      </p>
+    {{/link-to}}
   </div>
 </div>
