@@ -7,17 +7,17 @@ export default Ember.Controller.extend({
 
   activeList: null,
 
-  isValidateDisabled: Ember.computed.empty("model.songPart.name"),
+  isValidateDisabled: Ember.computed.empty("model.name"),
 
   isMainListActive: Ember.computed.equal("activeList", "main"),
 
   isAdditionalListActive: Ember.computed.equal("activeList", "additional"),
 
   selectableSingers: Ember.computed(
-    "model.singers", "mainSingers", "additionalSingers", function(){
+    "mainSingers", "additionalSingers", function(){
       return  DS.PromiseArray.create({
         promise: Ember.RSVP.Promise.all([
-          this.get("model.singers"),
+          this.store.findAll("singer"),
           Ember.RSVP.Promise.all(this.get("mainSingers")),
           Ember.RSVP.Promise.all(this.get("additionalSingers")),
         ]).then(([allSingers, mainSingers, additionalSingers])=>{
@@ -30,9 +30,9 @@ export default Ember.Controller.extend({
   ),
 
   mainSingers: Ember.computed(
-    "model.songPart.singerParts.@each.{isMainPart,isDeleted,singer}", {
+    "model.singerParts.@each.{isMainPart,isDeleted,singer}", {
       get: function(){
-        return (this.get("model.songPart.singerParts")
+        return (this.get("model.singerParts")
                 .filterBy("isDeleted", false)
                 .filterBy("isMainPart", true)
                 .getEach("singer"));
@@ -41,9 +41,9 @@ export default Ember.Controller.extend({
   ),
 
   additionalSingers: Ember.computed(
-    "model.songPart.singerParts.@each.{isMainPart,isDeleted,singer}", {
+    "model.singerParts.@each.{isMainPart,isDeleted,singer}", {
       get: function(){
-        return (this.get("model.songPart.singerParts")
+        return (this.get("model.singerParts")
                 .filterBy("isDeleted", false)
                 .filterBy("isMainPart", false)
                 .getEach("singer"));
@@ -53,14 +53,14 @@ export default Ember.Controller.extend({
 
   actions: {
     validate() {
-      this.model.songPart.save();
+      this.get('model').save();
       this.get("modifiedSingerParts").forEach((singerPart)=>{
         singerPart.save();
       });
       this.get("target").send("close");
     },
     cancel() {
-      this.model.songPart.rollbackAttributes();
+      this.get('model').rollbackAttributes();
       this.get("modifiedSingerParts").forEach((singerPart)=>{
         singerPart.rollbackAttributes();
       });
@@ -77,7 +77,7 @@ export default Ember.Controller.extend({
 
     deleteSinger (singer, main){
       let singerPart = (
-        this.get("model.songPart.singerParts")
+        this.get("model.singerParts")
         .filterBy("isMainPart", main)
         .filterBy("singer", singer).get("firstObject"));
 
@@ -90,7 +90,7 @@ export default Ember.Controller.extend({
         {
           isMainPart: main,
           singer: singer,
-          songPart: this.get("model.songPart"),
+          songPart: this.get("model"),
         });
 
       this.get("modifiedSingerParts").pushObject(singerPart);
