@@ -20,7 +20,10 @@ Router.map(function() {
     });
   });
   this.route('singers', function() {
-    this.route('singer', { path: ':singer_id' });
+    this.route('singer', { path: ':singer_id' }, function() {
+      this.route('edit');
+      this.route('view');
+    });
   });
 });
 
