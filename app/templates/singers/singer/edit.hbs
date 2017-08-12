@@ -32,18 +32,14 @@
   <div class="field-body">
     <div class="field">
       <div class="control">
-        {{#power-select
-          selected=model.mainSection
-          options=sections
-          onchange=(action (mut model.mainSection))
-          tagName=div
-          class="select is-fullwidth"
-          as |section|
-        }}
-          {{#part-badge color=section.color}}
+        {{#each sortedSections as |section|}}
+          <button class="button
+                         {{unless (eq section.id model.singer.mainSection.id) "is-outlined"}}
+                         is-{{section.colorClass}}"
+                  {{action "selectSection" section}}>
             {{section.name}}
-          {{/part-badge}}
-        {{/power-select}}
+          </button>
+        {{/each}}
       </div>
     </div>
   </div>
