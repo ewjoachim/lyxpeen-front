@@ -22,190 +22,6 @@
   }
 }
 
-// Colors
-.back-aqua {
-  background-color: #7fdbff;
-  color: hsl(197, 100%, 20%);
-}
-
-
-.back-black {
-  background-color: #111111;
-  color: #DDDDDD;
-}
-
-
-.back-blue {
-  background-color: #0074d9;
-  color: hsl(208, 100%, 85%);
-}
-
-
-.back-fuchsia {
-  background-color: #f012be;
-  color: hsl(314, 88%, 210)
-}
-
-
-.back-gray {
-  background-color: #aaaaaa;
-}
-
-
-.back-green {
-  background-color: #2ecc40;
-  color: hsl(127, 63%, 15%);
-}
-
-
-.back-lime {
-  background-color: #01ff70;
-  color: hsl(146, 100%, 20%);
-}
-
-
-.back-maroon {
-  background-color: #85144b;
-  color: hsl(331, 74%, 70%);
-}
-
-
-.back-navy {
-  background-color: #001f3f;
-  color: hsl(210, 100%, 75%);
-}
-
-
-.back-olive {
-  background-color: #3d9970;
-  color: hsl(153, 43%, 15%);
-}
-
-
-.back-orange {
-  background-color: #ff851b;
-  color: hsl(28, 100%, 20%);
-}
-
-
-.back-purple {
-  background-color: #b10dc9;
-  color: hsl(292, 88%, 820)
-}
-
-
-.back-red {
-  background-color: #ff4136;
-  color: hsl(3, 100%, 15%);
-}
-
-
-.back-silver {
-  background-color: #dddddd;
-}
-
-
-.back-teal {
-  background-color: #39cccc;
-}
-
-
-.back-yellow {
-  background-color: #ffdc00;
-  color: hsl(52, 100%, 20%)
-}
-
-
-.back-white {
-  background-color: #ffffff;
-  color: #444;
-}
-
-.text-aqua {
-  color: #7fdbff;
-}
-
-
-.text-black {
-  color: #111111;
-}
-
-
-.text-blue {
-  color: #0074d9;
-}
-
-
-.text-fuchsia {
-  color: #f012be;
-}
-
-
-.text-gray {
-  color: #aaaaaa;
-}
-
-
-.text-green {
-  color: #2ecc40;
-}
-
-
-.text-lime {
-  color: #01ff70;
-}
-
-
-.text-maroon {
-  color: #85144b;
-}
-
-
-.text-navy {
-  color: #001f3f;
-}
-
-
-.text-olive {
-  color: #3d9970;
-}
-
-
-.text-orange {
-  color: #ff851b;
-}
-
-
-.text-purple {
-  color: #b10dc9;
-}
-
-
-.text-red {
-  color: #ff4136;
-}
-
-
-.text-silver {
-  color: #dddddd;
-}
-
-
-.text-teal {
-  color: #39cccc;
-}
-
-
-.text-yellow {
-  color: #ffdc00;
-}
-
-
-.text-white {
-  color: #ffffff;
-}
-
-
 .song-part-section {
   margin-top: 1em;
 }
@@ -217,5 +33,97 @@
 [data-ember-action]:not(:disabled) {
   cursor: pointer;
 }
+
+.is-orange {
+  &.text {
+    color: $orange;
+  }
+  &.back {
+    background-color: $orange;
+    color: $orange-invert;
+  }
+}
+.is-yellow {
+  &.text {
+    color: $yellow;
+  }
+  &.back {
+    background-color: $yellow;
+    color: $yellow-invert;
+  }
+}
+.is-green {
+  &.text {
+    color: $green;
+  }
+  &.back {
+    background-color: $green;
+    color: $green-invert;
+  }
+}
+.is-turquoise {
+  &.text {
+    color: $turquoise;
+  }
+  &.back {
+    background-color: $turquoise;
+    color: $turquoise-invert;
+  }
+}
+.is-blue {
+  &.text {
+    color: $blue;
+  }
+  &.back {
+    background-color: $blue;
+    color: $blue-invert;
+  }
+}
+.is-purple {
+  &.text {
+    color: $purple;
+  }
+  &.back {
+    background-color: $purple;
+    color: $purple-invert;
+  }
+}
+.is-red {
+  &.text {
+    color: $red;
+  }
+  &.back {
+    background-color: $red;
+    color: $red-invert;
+  }
+}
+.is-black {
+  &.text {
+    color: $black;
+  }
+  &.back {
+    background-color: $black;
+    color: $white;
+  }
+}
+.is-grey {
+  &.text {
+    color: $grey;
+  }
+  &.back {
+    background-color: $grey;
+    color: $grey-dark;
+  }
+}
+.is-white {
+  &.text {
+    color: $white;
+  }
+  &.back {
+    background-color: $white;
+    color: $black;
+  }
+}
+
 
 @import "ember-power-select";

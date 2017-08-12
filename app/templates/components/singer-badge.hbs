@@ -1,7 +1,11 @@
 {{#if link}}
   {{#link-to "singers.singer" singer}}
-    {{part-badge title=singer.user.name color=singer.mainSection.color}}
+    {{#part-badge color=singer.mainSection.color}}
+      {{singer.user.name}}
+    {{/part-badge}}
   {{/link-to}}
 {{else}}
-  {{part-badge title=singer.user.name color=singer.mainSection.color}}
+    {{#part-badge color=singer.mainSection.color}}
+      {{singer.user.name}}
+    {{/part-badge}}
 {{/if}}

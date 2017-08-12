@@ -40,7 +40,9 @@
           class="select is-fullwidth"
           as |section|
         }}
-          {{section.name}}
+          {{#part-badge color=section.color}}
+            {{section.name}}
+          {{/part-badge}}
         {{/power-select}}
       </div>
     </div>
