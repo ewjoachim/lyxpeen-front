@@ -16,14 +16,13 @@
     <div class="field">
       <div class="control">
         <label class="checkbox">
-          {{input type="checkbox" checked=model.isActive}}
-          {{if model.isActive "yes" "no"}}
+          {{input type="checkbox" checked=model.singer.isActive}}
+          {{if model.singer.isActive "yes" "no"}}
         </label>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="field is-horizontal">
   <div class="field-label is-normal">
@@ -45,11 +44,19 @@
   </div>
 </div>
 
-<div class="field is-grouped">
-  <p class="control">
+<span class="control">
+  {{#if model.singer.isDeleted}}
+    <a class="button is-danger" {{action "save"}}>Confirm</a>
+  {{else}}
     <a class="button is-success" {{action "save"}}>Save</a>
-  </p>
-  <p class="control">
-    <a class="button is-link" {{action "cancel"}}>Cancel</a>
-  </p>
-</div>
+  {{/if}}
+</span>
+<span class="control">
+  <a class="button is-link" {{action "cancel"}}>Cancel</a>
+</span>
+<span class="control is-pulled-right">
+  {{#unless model.singer.isDeleted}}
+    <a class="button is-danger" {{action "delete"}}>Delete</a>
+  {{/unless}}
+</span>
+

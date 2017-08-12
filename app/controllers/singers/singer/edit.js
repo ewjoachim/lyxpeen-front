@@ -12,21 +12,26 @@ export default Ember.Controller.extend({
     selectSection(section){
       this.set("model.singer.mainSection", section);
     },
+    delete(){
+      this.get("model.singer").deleteRecord();
+      let a = this.store.peekAll("singer-part");
+      console.log(a)
+    },
     save(){
-      this.model.save();
-      this.get("model.user").then((user)=>{
-        user.save();
+      let deleted = this.model.get("isDeleted");
+      this.get("model.singer").save();
+      this.get("model.user").save();
 
-        this.send("view", this.model);
-      });
+      if(deleted) {
+        this.send("backToList");
+      } else {
+        this.send("backToView", this.get("model.singer"));
+      }
     },
     cancel(){
-      this.model.rollbackAttributes();
-      this.get("model.user").then((user)=>{
-        user.rollbackAttributes();
-
-        this.send("view", this.model);
-      });
+      this.get("model.singer").rollbackAttributes();
+      this.get("model.user").rollbackAttributes();
+      this.send("backToView", this.get("model"));
     },
   }
 });

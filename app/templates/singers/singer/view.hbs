@@ -6,27 +6,24 @@
   {{/link-to}}
 </h2>
 
-<h3 class="title is-3">
+<p>
   Active:
-  <span class="icon is-medium">
+  <span class="icon">
     {{#if model.isActive}}
       {{fa-icon "check"}}
     {{else}}
       {{fa-icon "times"}}
     {{/if}}
   </span>
-</h3>
+</p>
 
-<h3 class="title is-3">
+<p>
   Voice section:
-  <span class="tag is-large back-{{model.mainSection.color}}">
+  {{#part-badge color=model.mainSection.color}}
     {{model.mainSection.name}}
-  </span>
-</h3>
+  {{/part-badge}}
+</p>
 
-<h3 class="title is-3">
-  Can sing:
-</h3>
 <table class="table">
   <thead>
     <th>Folder</th>
