@@ -1,18 +1,16 @@
 <div class="columns">
-  <div class="column is-one-quarter">
-    <div class="menu">
+  <aside class="menu column is-one-quarter">
     <p class="menu-label">
       Folders
     </p>
-      <ul class="menu-list">
-        {{#each model as |folder|}}
-          <li>{{#link-to "folders.folder.songs" folder class="list-group-item"}}
-            {{folder.name}}
-          {{/link-to}}</li>
-        {{/each}}
-      </ul>
-    </div>
-  </div>
+    <ul class="menu-list">
+      {{#each model as |folder|}}
+        <li>{{#link-to "folders.folder.songs" folder class="list-group-item" activeClass="is-active"}}
+          {{folder.name}}
+        {{/link-to}}</li>
+      {{/each}}
+    </ul>
+  </aside>
   <div class="column is-three-quarters">
     {{outlet}}
   </div>

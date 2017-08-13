@@ -1,18 +1,16 @@
 <div class="columns">
-  <div class="column is-one-quarter">
-    <div class="menu">
+  <aside class="column is-one-quarter menu">
     <p class="menu-label">
       Singers
     </p>
-      <ul class="menu-list">
-        {{#each sortedSingers as |singer|}}
-          <li>{{#link-to "singers.singer" singer class="list-group-item"}}
-            {{singer-badge singer=singer}}
-          {{/link-to}}</li>
-        {{/each}}
-      </ul>
-    </div>
-  </div>
+    <ul class="menu-list">
+      {{#each sortedSingers as |singer|}}
+        <li>{{#link-to "singers.singer" singer class="list-group-item" activeClass="is-active"}}
+          {{singer-badge singer=singer}}
+        {{/link-to}}</li>
+      {{/each}}
+    </ul>
+  </aside>
   <div class="column is-three-quarters">
     {{outlet}}
   </div>

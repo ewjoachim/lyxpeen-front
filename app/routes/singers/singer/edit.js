@@ -11,13 +11,22 @@ export default Ember.Route.extend({
   afterModel(){
     return this.store.findAll('section');
   },
-
-
+  setupController: function(controller, model) {
+    controller.set('rollbackOnLeave', true);
+    this._super(...arguments);
+  },
   actions: {
     willTransition(){
+      if (this.get("controller.rollbackOnLeave")) {
+        this.send("rollback");
+      }
+    },
+    rollback(){
       this.get("controller.model.singer").rollbackAttributes();
+      this.get("controller.model.singer").reload();
       this.get("controller.model.user").rollbackAttributes();
     },
+
     backToList() {
       this.transitionTo("singers");
     },

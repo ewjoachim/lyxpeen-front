@@ -52,14 +52,15 @@ export default Ember.Controller.extend({
 
   actions: {
     validate() {
-      this.get('model').save();
+      this.model.save();
       this.get("modifiedSingerParts").forEach((singerPart)=>{
         singerPart.save();
       });
       this.get("target").send("close");
     },
     cancel() {
-      this.get('model').rollbackAttributes();
+      this.model.rollbackAttributes();
+      this.model.reload()
       this.get("modifiedSingerParts").forEach((singerPart)=>{
         singerPart.rollbackAttributes();
       });
